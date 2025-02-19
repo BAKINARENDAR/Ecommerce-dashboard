@@ -1,47 +1,71 @@
 import Logout from "@mui/icons-material/Logout";
-import Divider from "@mui/material/Divider";
-import ListItemIcon from "@mui/material/ListItemIcon";
-import Menu from "@mui/material/Menu";
-import MenuItem from "@mui/material/MenuItem";
+import { Badge, Button, Divider, Menu, MenuItem } from "@mui/material";
 import * as React from "react";
 import { useState } from "react";
 import { BsBrightnessHigh } from "react-icons/bs";
 import { FaShoppingCart } from "react-icons/fa";
 import { IoIosNotifications, IoIosSearch } from "react-icons/io";
-import { MdArrowDropDown, MdEmail, MdLockReset, MdMenuOpen } from "react-icons/md";
+import {
+  MdArrowDropDown,
+  MdEmail,
+  MdLockReset,
+  MdMenuOpen,
+} from "react-icons/md";
 import { VscAccount } from "react-icons/vsc";
 
+import ListItemIcon from "@mui/material/ListItemIcon";
 const Header = () => {
-  const [anchorEl, setAnchorEl] = React.useState(null);  
-  const [accountMenuAnchor, setAccountMenuAnchor] = useState(null);  
-  const [accountemail,setaccountemail]=useState(null);
-  const[accountcart,setaccountcart]=useState(null);
-  const openNotificationMenu = Boolean(anchorEl);
-  const openAccountMenu = Boolean(accountMenuAnchor);
-  const openemailmenu=Boolean(accountemail);
-  const opencartmenu=Boolean(accountcart);
+  const [cartAnchor, setCartAnchor] = useState(null);
+  const [EmailAnchor, setEmailAnchor] = useState(null);
+  const [NotificationAnchor, setNotificationAnchor] = useState(null);
+  const [UserAnchor, setUserAnchor] = useState(null);
 
+  const openCartMenu = Boolean(cartAnchor);
+  const openEmailMenu = Boolean(EmailAnchor);
+  const openNotificationMenu = Boolean(NotificationAnchor);
+  const openUserMenu = Boolean(UserAnchor);
 
-  const handleNotificationMenuOpen = (event) => {
-    setAccountMenuAnchor(null); 
-    setaccountemail(null);
-    setaccountcart(null);
-    setAnchorEl(anchorEl ? null : event.currentTarget); 
+  const orders = [
+    { id: 1, name: "Miron Mahmud", time: "Now", price: "$289.00", items: 3 },
+    { id: 2, name: "Tahmina Bonny", time: "2m", price: "$78.00", items: 1 },
+    { id: 3, name: "Shikdar Ahmed", time: "1h", price: "$2,975.00", items: 5 },
+    { id: 4, name: "Labonno Khan", time: "3d", price: "$96.00", items: 1 },
+    {
+      id: 5,
+      name: "Kamlesh Hasan",
+      time: "1w",
+      price: "$103.00",
+      items: 2,
+      img: "img5.png",
+    },
+  ];
+
+  const handleCartClick = (event) => {
+    setCartAnchor(event.currentTarget);
+  };
+  const handleCartClose = () => {
+    setCartAnchor(null);
   };
 
- 
-  const handleAccountMenuOpen = (event) => {
-    setAnchorEl(null);
-
-    setAccountMenuAnchor(accountMenuAnchor ? null : event.currentTarget); 
-    setaccountemail(accountemail ? null : event.currentTarget);
-    setaccountcart(accountcart ? null : event.currentTarget);
+  const handleEmailClick = (event) => {
+    setEmailAnchor(event.currentTarget);
+  };
+  const handleEmailClose = () => {
+    setEmailAnchor(null);
   };
 
-  const handleClose = () => {
-    setAnchorEl(null);
-    setAccountMenuAnchor(null);
-    setaccountemail(null);
+  const handleNotificationClick = (event) => {
+    setNotificationAnchor(event.currentTarget);
+  };
+  const handleNotificationClose = () => {
+    setNotificationAnchor(null);
+  };
+
+  const handleUserClick = (event) => {
+    setUserAnchor(event.currentTarget);
+  };
+  const handleUserClose = () => {
+    setUserAnchor(null);
   };
 
   return (
@@ -54,11 +78,9 @@ const Header = () => {
             </div>
 
             <div className="navbar-menu">
-              <div className="menu-content">
-                <button className="menu-btn">
-                  <MdMenuOpen className="menu-icon" />
-                </button>
-              </div>
+              <button className="menu-btn">
+                <MdMenuOpen className="menu-icon" />
+              </button>
             </div>
 
             <div className="nav-search">
@@ -73,128 +95,186 @@ const Header = () => {
             </div>
 
             <div className="nav-theme">
-              <div className="theme-content">
-                <button className="theme-btn" >
-                  <BsBrightnessHigh className="theme-icon" />
-                </button>
-              </div>
+              <button className="theme-btn">
+                <BsBrightnessHigh className="theme-icon" />
+              </button>
             </div>
 
+            {/* Cart Dropdown */}
             <div className="nav-cart">
-              <div className="cart-content">
-                <button className="cart-btn" onClick={handleNotificationMenuOpen}>
+              <button className="cart-btn" onClick={handleCartClick}>
+                <Badge badgeContent={orders.length} color="primary">
                   <FaShoppingCart className="cart-icon" />
-                  <Menu
-                    anchorEl={accountcart}
-                    id="notifications"
-                    className="notifications"
-                    open={opencartmenu}
-                    onClose={handleClose}
-                    transformOrigin={{
-                      horizontal: "right",
-                      vertical: "top",
-                    }}
-                    anchorOrigin={{
-                      horizontal: "right",
-                      vertical: "bottom",
-                    }}
-                  >
-                    <MenuItem onClick={handleClose}>
-                      <VscAccount className="account-icon" />
-                      My account
-                    </MenuItem>
-                    <Divider />
-                    <MenuItem onClick={handleClose}>
-                      <MdLockReset className="reset" />
-                      Reset Password
-                    </MenuItem>
-                    <MenuItem onClick={handleClose}>
-                      <ListItemIcon>
-                        <Logout fontSize="small" className="logout-icon" />
-                      </ListItemIcon>
-                      <p className="logout">Logout</p>
-                    </MenuItem>
-                  </Menu>
-                </button>
-              </div>
+                </Badge>
+              </button>
+
+              <Menu
+                anchorEl={cartAnchor}
+                open={openCartMenu}
+                onClose={handleCartClose}
+                transformOrigin={{ horizontal: "right", vertical: "top" }}
+                anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
+                className="notification-menu"
+              >
+                <MenuItem disabled className="notification-header">
+                  <strong>Notifications ({orders.length})</strong>
+                  <span className="settings-icon">⚙️</span>
+                </MenuItem>
+
+                <Divider />
+
+                {orders.map((order, index) => (
+                  <MenuItem key={order.id} className="notification-item">
+                    <div className="notification-avatar">
+                      <img src={order.img} alt="user" className="user-img" />
+                    </div>
+
+                    <div className="notification-content">
+                      <p className="notification-text">
+                        <strong>{order.name}</strong> purchased{" "}
+                        <b>{order.items} items</b> for {order.price}
+                      </p>
+                      <span className="notification-time">
+                        {order.time} ago
+                      </span>
+                    </div>
+
+                    <div className="notification-action">
+                      <span className="three-dots">⋮</span>
+                    </div>
+                  </MenuItem>
+                ))}
+
+                <Divider />
+
+                <Button
+                  fullWidth
+                  variant="contained"
+                  color="primary"
+                  className="view-all-btn"
+                >
+                  VIEW ALL NOTIFICATIONS
+                </Button>
+              </Menu>
             </div>
 
             <div className="nav-email">
               <div className="email-content">
-                <button className="email-btn" onClick={handleNotificationMenuOpen}>
+                <button className="email-btn" onClick={handleEmailClick}>
                   <MdEmail className="email-icon" />
-                  <Menu
-                    anchorEl={accountemail}
-                    id="notifications"
-                    className="notifications"
-                    open={openemailmenu}
-                    onClose={handleClose}
-                    transformOrigin={{
-                      horizontal: "right",
-                      vertical: "top",
-                    }}
-                    anchorOrigin={{
-                      horizontal: "right",
-                      vertical: "bottom",
-                    }}
-                  >
-                    <MenuItem onClick={handleClose}>
-                      <VscAccount className="account-icon" />
-                      My account
-                    </MenuItem>
-                    <Divider />
-                    <MenuItem onClick={handleClose}>
-                      <MdLockReset className="reset" />
-                      Reset Password
-                    </MenuItem>
-                    <MenuItem onClick={handleClose}>
-                      <ListItemIcon>
-                        <Logout fontSize="small" className="logout-icon" />
-                      </ListItemIcon>
-                      <p className="logout">Logout</p>
-                    </MenuItem>
-                  </Menu>
                 </button>
+                <Menu
+                  anchorEl={EmailAnchor}
+                  open={openEmailMenu}
+                  onClose={handleEmailClose}
+                  transformOrigin={{ horizontal: "right", vertical: "top" }}
+                  anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
+                >
+                  <MenuItem disabled>
+                    <strong>Orders ({orders.length})</strong>
+                  </MenuItem>
+                  <Divider />
+
+                  {orders.map((order) => (
+                    <MenuItem key={order.id} className="cart-item">
+                      <img
+                        src={order.img}
+                        alt="product"
+                        className="cart-item-img"
+                      />
+                      <div className="cart-item-info">
+                        <p className="cart-item-name">
+                          {order.name} ~ {order.time}
+                        </p>
+                        <p className="cart-item-price">
+                          ({order.price}) total price
+                        </p>
+                      </div>
+                      <span className="cart-item-count">+{order.items}</span>
+                    </MenuItem>
+                  ))}
+
+                  <Divider />
+                  <Button fullWidth variant="contained" color="primary">
+                    View All Orders
+                  </Button>
+                </Menu>
               </div>
             </div>
 
             <div className="nav-noti">
-              <div className="noti-content">
-                <button className="noti-btn" onClick={handleNotificationMenuOpen}>
-                  <IoIosNotifications className="noti-icon" />
-                  <Menu
-                    anchorEl={anchorEl}
-                    id="notifications"
-                    className="notifications"
-                    open={openNotificationMenu}
-                    onClose={handleClose}
-                    transformOrigin={{
-                      horizontal: "right",
-                      vertical: "top",
-                    }}
-                    anchorOrigin={{
-                      horizontal: "right",
-                      vertical: "bottom",
-                    }}
-                  >
-                    <MenuItem onClick={handleClose}>
-                      <VscAccount className="account-icon" />
-                      My account
-                    </MenuItem>
-                    <Divider />
-                    <MenuItem onClick={handleClose}>
-                      <MdLockReset className="reset" />
-                      Reset Password
-                    </MenuItem>
-                    <MenuItem onClick={handleClose}>
-                      <ListItemIcon>
-                        <Logout fontSize="small" className="logout-icon" />
-                      </ListItemIcon>
-                      <p className="logout">Logout</p>
-                    </MenuItem>
-                  </Menu>
-                </button>
-              </div>
+              <button className="noti-btn" onClick={handleNotificationClick}>
+                <IoIosNotifications className="noti-icon" />
+              </button>
+
+              <Menu
+                className="menu-noti"
+                anchorEl={NotificationAnchor}
+                open={openNotificationMenu}
+                onClose={handleNotificationClose}
+                transformOrigin={{ horizontal: "right", vertical: "top" }}
+                anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
+              >
+                <MenuItem disabled>
+                  <strong>Orders ({orders.length})</strong>
+                </MenuItem>
+                <Divider />
+
+                <div className="noti-container">
+                  <div className="noti-list">
+                    <div className="noti-logo"></div>
+                    <div className="noti-matter">
+                      <span>
+                        <b>Mahmudul</b>
+                        added to his favourite list
+                        <b>Leather Belt steave madden</b>
+                      </span>
+                      <p className="noti-time">few seconds ago!</p>
+                    </div>
+                  </div>
+
+                  <div className="noti-list">
+                    <div className="noti-logo"></div>
+                    <div className="noti-matter">
+                      <span>
+                        <b>Mahmudul</b>
+                        added to his favourite list
+                        <b>Leather Belt steave madden</b>
+                      </span>
+                      <p className="noti-time">few seconds ago!</p>
+                    </div>
+                  </div>
+
+                  <div className="noti-list">
+                    <div className="noti-logo"></div>
+                    <div className="noti-matter">
+                      <span>
+                        <b>Mahmudul</b>
+                        added to his favourite list
+                        <b>Leather Belt steave madden</b>
+                      </span>
+                      <p className="noti-time">few seconds ago!</p>
+                    </div>
+                  </div>
+
+                  <div className="noti-list">
+                    <div className="noti-logo"></div>
+                    <div className="noti-matter">
+                      <span>
+                        <b>Mahmudul</b>
+                        added to his favourite list
+                        <b>Leather Belt steave madden</b>
+                      </span>
+                      <p className="noti-time">few seconds ago!</p>
+                    </div>
+                  </div>
+
+                  <Divider />
+                </div>
+                <Button fullWidth variant="contained" color="primary">
+                  View All Notifications
+                </Button>
+              </Menu>
             </div>
 
             <div className="navbar-account">
@@ -203,42 +283,39 @@ const Header = () => {
                 <div className="name">
                   <div className="p-name">
                     <p className="Narendar">Narendar</p>
-                    <button
-                      className="account-down"
-                      onClick={handleAccountMenuOpen}
-                    >
+                    <button className="account-down" onClick={handleUserClick}>
                       <MdArrowDropDown className="account-icon" />
-                      <Menu
-                        anchorEl={accountMenuAnchor}
-                        id="account-menu"
-                        open={openAccountMenu}
-                        onClose={handleClose}
-                        transformOrigin={{
-                          horizontal: "right",
-                          vertical: "top",
-                        }}
-                        anchorOrigin={{
-                          horizontal: "right",
-                          vertical: "bottom",
-                        }}
-                      >
-                        <MenuItem onClick={handleClose}>
-                          <VscAccount className="account-icon" />
-                          My account
-                        </MenuItem>
-                        <Divider />
-                        <MenuItem onClick={handleClose}>
-                          <MdLockReset className="reset" />
-                          Reset Password
-                        </MenuItem>
-                        <MenuItem onClick={handleClose}>
-                          <ListItemIcon>
-                            <Logout fontSize="small" className="logout-icon" />
-                          </ListItemIcon>
-                          <p className="logout">Logout</p>
-                        </MenuItem>
-                      </Menu>
                     </button>
+                    <Menu
+                      anchorEl={UserAnchor}
+                      id="account-menu"
+                      open={openUserMenu}
+                      onClose={handleUserClose}
+                      transformOrigin={{
+                        horizontal: "right",
+                        vertical: "top",
+                      }}
+                      anchorOrigin={{
+                        horizontal: "right",
+                        vertical: "bottom",
+                      }}
+                    >
+                      <MenuItem onClick={handleUserClose}>
+                        <VscAccount className="account-icon" />
+                        My account
+                      </MenuItem>
+                      <Divider />
+                      <MenuItem onClick={handleUserClose}>
+                        <MdLockReset className="reset" />
+                        Reset Password
+                      </MenuItem>
+                      <MenuItem onClick={handleUserClose}>
+                        <ListItemIcon>
+                          <Logout fontSize="small" className="logout-icon" />
+                        </ListItemIcon>
+                        <p className="logout">Logout</p>
+                      </MenuItem>
+                    </Menu>
                   </div>
                   <span className="@bakinarendar">@bakinarendar</span>
                 </div>
