@@ -243,10 +243,234 @@ margin-left: 0;
   }
   .left{
     width: 20%;
-    background-color: #0858f7;
-    height: 400px;
+    background-color: #ffff;
+    height: 90vh;
+
+    scroll-behavior: smooth;
+    overflow-y: scroll;
+    overflow-x: hidden;
   }
   .right{
     width: 80%;
-    background-color: #67677a;
+ scroll-behavior: smooth;
+    overflow-y:scroll;
+    overflow-x: hidden;
   }
+  .sidebar-container p{
+    color: #bababa;
+    margin-left: 10px;
+  }
+  
+  .dash-btn{
+    background-color: #ffffff;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    height: 50px;
+
+  }
+  .dash-btn:hover{
+    background-color: #f1f1f1;
+  }
+  .dash-icon{
+    font-size: 1.3rem;
+   margin-right: 10px;
+   color: #5e5d72;
+   
+  }
+  .dashboard{
+    display: flex;
+    margin-top: 10px;
+  }
+  .for-icon{
+margin-left: 60px;
+color: #5e5d72;
+
+  }
+  .dashboard span{
+    color: #5e5d72;
+  }
+  .dashboard button{
+    margin-left: 20px;
+  }
+  .Products button{
+    margin-left: 20px;
+  }
+  .Orders button{
+    margin-left: 20px;
+  }
+  .Settings button{
+    margin-left: 20px;
+  }
+  .Messages button{
+    margin-left: 20px;
+  }
+  .Notifications button{
+    margin-left: 20px;
+  }
+  .pdt-btn{
+    background-color: #ffffff;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    height: 50px;
+  }
+  .pdt-btn:hover{
+    background-color: #f1f1f1;
+  }
+  .pdt-icon{
+    font-size: 1.3rem;
+   margin-right: 10px;
+   color: #5e5d72;
+  }
+  .pdtfor-icon{
+    margin-left: 70px;
+color: #5e5d72;
+  }
+  .Products span{
+    color: #5e5d72;
+  }
+
+
+
+  .o-btn{
+    background-color: #ffffff;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    height: 50px;
+  }
+  .o-btn:hover{
+    background-color: #f1f1f1;
+  }
+  .o-icon{
+    font-size: 1.3rem;
+   margin-right: 10px;
+   color: #5e5d72;
+  }
+  .ofor-icon{
+    margin-left: 86px;
+color: #5e5d72;
+  }
+  .Orders span{
+    color: #5e5d72;
+  }
+
+
+  .msg-btn{
+    background-color: #ffffff;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    height: 50px;
+  }
+  .msg-btn:hover{
+    background-color: #f1f1f1;
+  }
+  .msg-icon{
+    font-size: 1.3rem;
+   margin-right: 10px;
+   color: #5e5d72;
+  }
+  .msgfor-icon{
+    margin-left: 65px;
+color: #5e5d72;
+  }
+  .Messages span{
+    color: #5e5d72;
+  }
+
+
+  .n-btn{
+    background-color: #ffffff;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    height: 50px;
+  }
+  .n-btn:hover{
+    background-color: #f1f1f1;
+  }
+  .n-icon{
+    font-size: 1.3rem;
+   margin-left: 19px;
+   margin-right: 10px;
+   color: #5e5d72;
+  }
+  .nfor-icon{
+    margin-left: 35px;
+color: #5e5d72;
+  }
+  .Noti span{
+    color: #5e5d72;
+  
+  }
+
+
+  .set-btn{
+    background-color: #ffffff;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    height: 50px;
+  }
+  .set-btn:hover{
+    background-color: #f1f1f1;
+  }
+  .set-icon{
+    font-size: 1.3rem;
+
+   margin-right: 10px;
+   color: #5e5d72;
+  }
+  .setfor-icon{
+    margin-left: 72px;
+color: #5e5d72;
+  }
+  .Settings span{
+    color: #5e5d72;
+  
+  }
+
+.P-dropdown {
+  list-style: none;
+  
+}
+  
+.pdt-accordion {
+  box-shadow: none !important; 
+  background: transparent !important; 
+}
+.prd{
+  font-size: 0.9rem;
+
+}
+.product-list{
+  list-style: none;
+  cursor: pointer;
+}
+.product-list li a{
+ text-decoration: none;
+ color: inherit !important;
+
+}
+.product-list li{
+  margin-top: 5px;
+  color: #5e5d72;
+  font-size: 0.9rem;
+  line-height: 20px;
+}
+.product-list li:hover{
+  color: #0858f7;
+}
+.pdtfor-icon, .pdtexp-icon {
+  margin-right: 42px !important; 
+  transition: transform 0.3s ease-in-out; 
+}
+.pdt-arrow{
+ 
+  margin-right: 40px;
+}
+.pdt-icon{
+  margin-bottom: 5px;
+}
