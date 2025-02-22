@@ -2,12 +2,12 @@ import FormControl from "@mui/material/FormControl";
 import InputLabel from "@mui/material/InputLabel";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
+import Pagination from '@mui/material/Pagination';
+import Select from "@mui/material/Select";
+import TextField from "@mui/material/TextField";
 import { FaEye, FaStar } from "react-icons/fa";
 import { FaPencil } from "react-icons/fa6";
 import { MdDelete } from "react-icons/md";
-
-import Select from "@mui/material/Select";
-import TextField from "@mui/material/TextField";
 
 import * as React from "react";
 import { CiMenuKebab } from "react-icons/ci";
@@ -26,13 +26,6 @@ const BestSellingProducts = () => {
   const handleClose = () => {
     setAnchorEl(null);
   };
-  const data = [
-    { uid: "#1", product: "Tops and skirts", category: "womans", brand: "richman", price: "$19.00", stock: 30, rating: "4.9 (16)", orders: 380, sales: "$38k" },
-    { uid: "#2", product: "Leather belt", category: "mans", brand: "lubana", price: "$14.00", stock: 23, rating: "4.5 (38)", orders: 189, sales: "$9k" },
-    { uid: "#3", product: "Existing product", category: "womans", brand: "ecstasy", price: "$33.00", stock: 30, rating: "4.1 (69)", orders: 380, sales: "$38k" },
-    { uid: "#4", product: "Existing product", category: "kidz", brand: "ecstasy", price: "$33.00", stock: 30, rating: "4.4 (47)", orders: 380, sales: "$38k" },
-  ];
-  
   return (
     
     <>
@@ -154,7 +147,246 @@ const BestSellingProducts = () => {
           
             <tr >
               <td><span>#1</span></td>
-              <td><span>Tops and skirts</span></td>
+              <td className="products-t">
+                <div className="p1-image"></div>
+                <div className="product-matter">
+                <span className="top">Tops and skirts</span><br/>
+                <span className="bottom">Womens exclusive brandnew clothes for younger women</span>
+                </div>
+               
+              </td>
+              <td><span>womans</span></td>
+              <td><span>richman</span></td>
+              <td className="price-td"><del className="old">
+              $19.00
+              </del>
+                <span className="new">$19.00</span>
+                </td>
+              <td><span>30</span></td>
+              <td className="rating-td">
+              <FaStar className="rtd" />
+                <span>4.9 (16)</span>
+                </td>
+              <td><span>380</span></td>
+              <td><span>$38k</span></td>
+              <td className="action-buttons">
+                <button className="view-btn"><FaEye /></button>
+                <button className="edit-btn"><FaPencil /></button>
+                <button className="delete-btn"><MdDelete /></button>
+              </td>
+            </tr>
+
+
+
+            <tr >
+              <td><span>#1</span></td>
+              <td className="products-t">
+                <div className="p1-image"></div>
+                <div className="product-matter">
+                <span className="top">Tops and skirts</span><br/>
+                <span className="bottom">Womens exclusive brandnew clothes for younger women</span>
+                </div>
+               
+              </td>
+              <td><span>womans</span></td>
+              <td><span>richman</span></td>
+              <td className="price-td"><del className="old">
+              $19.00
+              </del>
+                <span className="new">$19.00</span>
+                </td>
+              <td><span>30</span></td>
+              <td className="rating-td">
+              <FaStar className="rtd" />
+                <span>4.9 (16)</span>
+                </td>
+              <td><span>380</span></td>
+              <td><span>$38k</span></td>
+              <td className="action-buttons">
+                <button className="view-btn"><FaEye /></button>
+                <button className="edit-btn"><FaPencil /></button>
+                <button className="delete-btn"><MdDelete /></button>
+              </td>
+            </tr>
+
+
+
+
+
+            <tr >
+              <td><span>#1</span></td>
+              <td className="products-t">
+                <div className="p1-image"></div>
+                <div className="product-matter">
+                <span className="top">Tops and skirts</span><br/>
+                <span className="bottom">Womens exclusive brandnew clothes for younger women</span>
+                </div>
+               
+              </td>
+              <td><span>womans</span></td>
+              <td><span>richman</span></td>
+              <td className="price-td"><del className="old">
+              $19.00
+              </del>
+                <span className="new">$19.00</span>
+                </td>
+              <td><span>30</span></td>
+              <td className="rating-td">
+              <FaStar className="rtd" />
+                <span>4.9 (16)</span>
+                </td>
+              <td><span>380</span></td>
+              <td><span>$38k</span></td>
+              <td className="action-buttons">
+                <button className="view-btn"><FaEye /></button>
+                <button className="edit-btn"><FaPencil /></button>
+                <button className="delete-btn"><MdDelete /></button>
+              </td>
+            </tr>
+
+
+
+            <tr >
+              <td><span>#1</span></td>
+              <td className="products-t">
+                <div className="p1-image"></div>
+                <div className="product-matter">
+                <span className="top">Tops and skirts</span><br/>
+                <span className="bottom">Womens exclusive brandnew clothes for younger women</span>
+                </div>
+               
+              </td>
+              <td><span>womans</span></td>
+              <td><span>richman</span></td>
+              <td className="price-td"><del className="old">
+              $19.00
+              </del>
+                <span className="new">$19.00</span>
+                </td>
+              <td><span>30</span></td>
+              <td className="rating-td">
+              <FaStar className="rtd" />
+                <span>4.9 (16)</span>
+                </td>
+              <td><span>380</span></td>
+              <td><span>$38k</span></td>
+              <td className="action-buttons">
+                <button className="view-btn"><FaEye /></button>
+                <button className="edit-btn"><FaPencil /></button>
+                <button className="delete-btn"><MdDelete /></button>
+              </td>
+            </tr>
+
+
+
+            <tr >
+              <td><span>#1</span></td>
+              <td className="products-t">
+                <div className="p1-image"></div>
+                <div className="product-matter">
+                <span className="top">Tops and skirts</span><br/>
+                <span className="bottom">Womens exclusive brandnew clothes for younger women</span>
+                </div>
+               
+              </td>
+              <td><span>womans</span></td>
+              <td><span>richman</span></td>
+              <td className="price-td"><del className="old">
+              $19.00
+              </del>
+                <span className="new">$19.00</span>
+                </td>
+              <td><span>30</span></td>
+              <td className="rating-td">
+              <FaStar className="rtd" />
+                <span>4.9 (16)</span>
+                </td>
+              <td><span>380</span></td>
+              <td><span>$38k</span></td>
+              <td className="action-buttons">
+                <button className="view-btn"><FaEye /></button>
+                <button className="edit-btn"><FaPencil /></button>
+                <button className="delete-btn"><MdDelete /></button>
+              </td>
+            </tr>
+
+
+
+            <tr >
+              <td><span>#1</span></td>
+              <td className="products-t">
+                <div className="p1-image"></div>
+                <div className="product-matter">
+                <span className="top">Tops and skirts</span><br/>
+                <span className="bottom">Womens exclusive brandnew clothes for younger women</span>
+                </div>
+               
+              </td>
+              <td><span>womans</span></td>
+              <td><span>richman</span></td>
+              <td className="price-td"><del className="old">
+              $19.00
+              </del>
+                <span className="new">$19.00</span>
+                </td>
+              <td><span>30</span></td>
+              <td className="rating-td">
+              <FaStar className="rtd" />
+                <span>4.9 (16)</span>
+                </td>
+              <td><span>380</span></td>
+              <td><span>$38k</span></td>
+              <td className="action-buttons">
+                <button className="view-btn"><FaEye /></button>
+                <button className="edit-btn"><FaPencil /></button>
+                <button className="delete-btn"><MdDelete /></button>
+              </td>
+            </tr>
+
+
+
+            <tr >
+              <td><span>#1</span></td>
+              <td className="products-t">
+                <div className="p1-image"></div>
+                <div className="product-matter">
+                <span className="top">Tops and skirts</span><br/>
+                <span className="bottom">Womens exclusive brandnew clothes for younger women</span>
+                </div>
+               
+              </td>
+              <td><span>womans</span></td>
+              <td><span>richman</span></td>
+              <td className="price-td"><del className="old">
+              $19.00
+              </del>
+                <span className="new">$19.00</span>
+                </td>
+              <td><span>30</span></td>
+              <td className="rating-td">
+              <FaStar className="rtd" />
+                <span>4.9 (16)</span>
+                </td>
+              <td><span>380</span></td>
+              <td><span>$38k</span></td>
+              <td className="action-buttons">
+                <button className="view-btn"><FaEye /></button>
+                <button className="edit-btn"><FaPencil /></button>
+                <button className="delete-btn"><MdDelete /></button>
+              </td>
+            </tr>
+
+
+            <tr >
+              <td><span>#1</span></td>
+              <td className="products-t">
+                <div className="p1-image"></div>
+                <div className="product-matter">
+                <span className="top">Tops and skirts</span><br/>
+                <span className="bottom">Womens exclusive brandnew clothes for younger women</span>
+                </div>
+               
+              </td>
               <td><span>womans</span></td>
               <td><span>richman</span></td>
               <td className="price-td"><del className="old">
@@ -178,6 +410,13 @@ const BestSellingProducts = () => {
         
         </tbody>
       </table>
+      <div className="pagination-p">
+     <p> showing 12 of 60 results</p>
+      <Pagination count={10} color="primary" className="page" />
+      </div>
+      
+
+      
     </div>
           </div>
         </div>

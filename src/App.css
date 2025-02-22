@@ -7,6 +7,7 @@
   body {
     background-color:  #e3e6e6;;
   }
+  
   .navbar-content
   {
     display: flex;
@@ -238,13 +239,11 @@ margin-left: 0;
     font-size: 0.89rem;
     margin-top: 8px;
   }
-  .Dashboard-container{
-    display: flex;
-  }
+  
   .left{
     width: 20%;
     background-color: #ffff;
-    height: 90vh;
+    height: 96vh;
 
     scroll-behavior: smooth;
     overflow-y: scroll;
@@ -463,13 +462,7 @@ margin-left: 15px;
   margin-right: 15px;
   margin-bottom: 30px;
 }
-.right{
-  width: 80%;
-scroll-behavior: smooth;
-  overflow-y:scroll;
-  overflow-x: hidden;
-  background-color: #f8f8f8;
-}
+
 .heading{
   margin-top: 10px;
   margin-bottom: 10px;
@@ -488,29 +481,27 @@ scroll-behavior: smooth;
 
 .box5{
   background-color: #155de6;
-  width: 320px;
+  max-width: 500px;
   height: 325px;
   margin-left: 10px;
   border-radius: 10px;
  
 }
 
-.dashboard-container {
- display: flex;
-
-}
-
 .left {
   width: 20%;
+  transition: all 0.3s ease-in-out;
 }
 
 .right {
-  width: 80%;
+  width: 96%;
   padding: 20px;
-    height: 80vh;
+height: 90vh;
     scroll-behavior: smooth;
     overflow-y: scroll;
+    background-color: #f8f8f8;
     overflow-x: hidden;
+    scrollbar-width: none;
 }
 
 .heading h4 {
@@ -749,4 +740,62 @@ color: #5e5d72;
   color: #edb213;
   margin-right: 2px;
 }
+.top{
+  font-weight: bold;
+  font-size: 14px;
+}
+.bottom{
+  font-size: 0.8rem;
+  color: gray;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.p1-image{
+  background-image: url("assets/images/p1.webp");
+  width: 50px;
+  height: 30px;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+.product-matter{
+  display: grid;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100px;
+  display: block;
+}
+.products-t{
+  display: flex;
+  align-items: center; 
+  gap: 10px;
+}
+ .page{
+ margin-left: 400px;
+ margin-top: 10px;
+
+}
+.pagination-p p{
+  margin-top: 10px;
+ 
+}
+.pagination-p{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.main-container{
+ overflow: hidden;
+ display: flex;
+
+}
+.main-container .content.toggle{
+  width: 100%;
+}
+.main-container .left.toggle{
+  width: 0%;
+}
+
+
 

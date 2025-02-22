@@ -4,7 +4,6 @@ import { FaBoxOpen, FaShoppingCart, FaStar, FaUser } from "react-icons/fa";
 import { IoIosArrowUp } from "react-icons/io";
 import BestSellinProducts from "../../components/BestSellingProducts/BestSellingProducts";
 import Boxmenu from "../../components/Boxmenu/Boxmenu";
-import Sidebar from "../../components/Sidebar/Sidebar";
 // Box Data Array
 
 const options = {
@@ -80,10 +79,6 @@ const Dashboard = () => {
     <>
       <section>
         <div className="dashboard-container">
-          <div className="left">
-            <Sidebar />
-          </div>
-
           <div className="right">
             <div className="right-content">
               <div className="heading">

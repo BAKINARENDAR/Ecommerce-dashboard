@@ -5,6 +5,7 @@ import { useState } from "react";
 import { BsBrightnessHigh } from "react-icons/bs";
 import { FaShoppingCart } from "react-icons/fa";
 import { IoIosNotifications, IoIosSearch } from "react-icons/io";
+import { IoMenuOutline } from "react-icons/io5";
 import {
   MdArrowDropDown,
   MdEmail,
@@ -14,6 +15,7 @@ import {
 import { VscAccount } from "react-icons/vsc";
 
 import ListItemIcon from "@mui/material/ListItemIcon";
+import { MyContext } from "../../App";
 const Header = () => {
   const [cartAnchor, setCartAnchor] = useState(null);
   const [EmailAnchor, setEmailAnchor] = useState(null);
@@ -24,7 +26,7 @@ const Header = () => {
   const openEmailMenu = Boolean(EmailAnchor);
   const openNotificationMenu = Boolean(NotificationAnchor);
   const openUserMenu = Boolean(UserAnchor);
-
+ const context=React.useContext(MyContext);
   const orders = [
     { id: 1, name: "Miron Mahmud", time: "Now", price: "$289.00", items: 3 },
     { id: 2, name: "Tahmina Bonny", time: "2m", price: "$78.00", items: 1 },
@@ -78,8 +80,12 @@ const Header = () => {
             </div>
 
             <div className="navbar-menu">
-              <button className="menu-btn">
-                <MdMenuOpen className="menu-icon" />
+              <button className="menu-btn" onClick={()=>context.setisToggleopen(!context.isToggleopen)}>
+              
+                {
+                  context.isToggleopen===false?<MdMenuOpen className="menu-icon" />:<IoMenuOutline className="menu-icon" />
+
+                }
               </button>
             </div>
 
@@ -100,7 +106,7 @@ const Header = () => {
               </button>
             </div>
 
-            {/* Cart Dropdown */}
+  
             <div className="nav-cart">
               <button className="cart-btn" onClick={handleCartClick}>
                 <Badge badgeContent={orders.length} color="primary">
