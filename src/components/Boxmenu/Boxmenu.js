@@ -17,7 +17,7 @@ const Boxmenu=()=>{
   };
     return(
         <>
-        <section>
+        <section >
         <div>
       <Button
         id="basic-button"

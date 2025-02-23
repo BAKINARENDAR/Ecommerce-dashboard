@@ -77,7 +77,7 @@ const salesData = {
 const Dashboard = () => {
   return (
     <>
-      <section>
+      <section className="color">
         <div className="dashboard-container">
           <div className="right">
             <div className="right-content">

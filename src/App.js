@@ -24,26 +24,21 @@ function AppContent() {
   const [showHeaderSidebar, setShowHeaderSidebar] = useState(true);
   const location = useLocation();
 
-  // ✅ Load Theme from Local Storage (Default: "light")
-  const [Thememode, setThememode] = useState(() => {
-    return localStorage.getItem("Thememode") || "light";
-  });
+  // ✅ Load Theme from Local Storage
+  const [Thememode, setThememode] = useState(() => localStorage.getItem("theme") || "light");
 
-  // ✅ Apply Theme to Body & Persist in Local Storage
+  // ✅ Apply Theme to `body` & Persist in Local Storage
   useEffect(() => {
-    console.log("Theme mode updated:", Thememode); // Debugging log
-    document.body.classList.remove("light", "dark");
-    document.body.classList.add(Thememode);
-    localStorage.setItem("Thememode", Thememode);
+    document.body.className = Thememode; // Set class to "light" or "dark"
   }, [Thememode]);
 
   const values = {
+Thememode,
+setThememode,
     IsToggleOpen,
     setIsToggleOpen,
     showHeaderSidebar,
     setShowHeaderSidebar,
-    setThememode,
-    Thememode,
   };
 
   const isAuthPage = location.pathname === "/Login" || location.pathname === "/Signup";
@@ -51,27 +46,29 @@ function AppContent() {
   return (
     <MyContext.Provider value={values}>
       {!isAuthPage && showHeaderSidebar && <Header />}
-
-      {!isAuthPage ? (
-        <div className="main-container">
-          {showHeaderSidebar && (
-            <div className={`sidebar ${IsToggleOpen ? "toggle" : ""}`}>
-              <Sidebar />
+      
+      <div className="app-container">
+        {!isAuthPage ? (
+          <div className="main-container">
+            {showHeaderSidebar && (
+              <div className={`sidebar ${IsToggleOpen ? "toggle" : ""}`}>
+                <Sidebar />
+              </div>
+            )}
+            <div className={`content ${IsToggleOpen ? "toggle" : ""}`}>
+              <Routes>
+                <Route path="/" element={<Dashboard />} />
+                <Route path="/Dashboard" element={<Dashboard />} />
+              </Routes>
             </div>
-          )}
-          <div className={`content ${IsToggleOpen ? "toggle" : ""}`}>
-            <Routes>
-              <Route path="/" element={<Dashboard />} />
-              <Route path="/Dashboard" element={<Dashboard />} />
-            </Routes>
           </div>
-        </div>
-      ) : (
-        <Routes>
-          <Route path="/Login" element={<Login />} />
-          <Route path="/Signup" element={<Signup />} />
-        </Routes>
-      )}
+        ) : (
+          <Routes>
+            <Route path="/Login" element={<Login />} />
+            <Route path="/Signup" element={<Signup />} />
+          </Routes>
+        )}
+      </div>
     </MyContext.Provider>
   );
 }

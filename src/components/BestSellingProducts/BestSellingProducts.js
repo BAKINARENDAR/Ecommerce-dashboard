@@ -29,7 +29,7 @@ const BestSellingProducts = () => {
   return (
     
     <>
-      <section>
+      <section >
         <div className="best-container">
           <div className="best-content">
             <div className="best-heading">

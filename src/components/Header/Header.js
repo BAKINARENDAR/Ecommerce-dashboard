@@ -24,7 +24,12 @@ const Header = () => {
 
 const context=useContext(MyContext);
 
+const { Thememode, setThememode } = useContext(MyContext);
 
+const handleThemeToggle = () => {
+  const newTheme = Thememode === "light" ? "dark" : "light";
+  setThememode(newTheme);
+};
 
 
   const orders = [
@@ -101,15 +106,21 @@ const context=useContext(MyContext);
                   className="search-bar"
                   type="text"
                   placeholder="Search "
+                  style={{
+                    backgroundColor: Thememode === "dark" ? "#333" : "#fff",
+                    color: Thememode === "dark" ? "#fff" : "#000",
+                    border: "1px solid " + (Thememode === "dark" ? "#555" : "#ccc"),
+                  }}
                 />
               </div>
             </div>
 
             <div className="nav-theme">
-              <button className="theme-btn" onClick={()=>context.setThememode(!context.Thememode)}>
-                <BsBrightnessHigh className="theme-icon" />
-              </button>
-            </div>
+            <button className="theme-btn" onClick={handleThemeToggle}>
+            <BsBrightnessHigh className="theme-icon" />
+          </button>
+</div>
+
 
             <div className="nav-cart">
               <button className="cart-btn" onClick={handleCartClick}>
