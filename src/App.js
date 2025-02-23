@@ -1,42 +1,52 @@
-import '@mui/material/styles';
-
+import { createContext, useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
-import Dashboard from './pages/Dashboard';
-
-import { createContext, useState } from 'react';
 import Header from "./components/Header/Header";
-import Sidebar from './components/Sidebar/Sidebar';
-const MyContext=createContext();
+import ScrollToTop from "./components/ScrollToTop/ScrollToTop";
+import Sidebar from "./components/Sidebar/Sidebar";
+import Dashboard from "./pages/Dashboard";
+import Login from "./pages/Login";
+import Signup from "./pages/Signup";
+const MyContext = createContext();
+
 function App() {
-  const[isToggleopen,setisToggleopen]=useState(false);
-  const values={
-isToggleopen,
-setisToggleopen
-  }
-  
+  const [IsToggleOpen, setIsToggleOpen] = useState(false);
+  const [showHeaderSidebar, setShowHeaderSidebar] = useState(true);
+
+  const values = {
+    IsToggleOpen,
+    setIsToggleOpen,
+    showHeaderSidebar,
+    setShowHeaderSidebar,
+  };
+
   return (
-    <>
-      <BrowserRouter>
+    <BrowserRouter>
+    <ScrollToTop/>
       <MyContext.Provider value={values}>
-        <Header />
-        <div className='main-container'>
-          <div className={`left ${isToggleopen===true?'toggle':''}`}>
-            <Sidebar/>
+        {showHeaderSidebar===true && <Header />}
+
+        <div className="main-container">
+          
+          <div className={`sidebar ${IsToggleOpen ? "toggle" : ""}` }>
+            
+            {showHeaderSidebar  && <Sidebar />}
           </div>
-          <div  className={`content ${isToggleopen===true?'toggle':''}`}>
-        <Routes>
-          <Route path="/" element={<Dashboard />} />
-          <Route path="/Dashboard" exact={true} element={<Dashboard />} />
-        </Routes>
+
+          <div className={`content ${IsToggleOpen ? "toggle" : ""}`}>
+            <Routes>
+              <Route path="/" element={<Dashboard />} />
+              <Route path="/Dashboard" element={<Dashboard />} />
+              <Route path="/Login" element={<Login />} />
+              <Route path="/Signup" element={<Signup />} />
+            </Routes>
+          </div>
         </div>
-        </div>
-        </MyContext.Provider>
-      </BrowserRouter>
-    </>
+      </MyContext.Provider>
+   
+    </BrowserRouter>
   );
 }
 
 export default App;
 export { MyContext };
-

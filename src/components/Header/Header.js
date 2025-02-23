@@ -1,20 +1,15 @@
 import Logout from "@mui/icons-material/Logout";
 import { Badge, Button, Divider, Menu, MenuItem } from "@mui/material";
+import ListItemIcon from "@mui/material/ListItemIcon";
 import * as React from "react";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { BsBrightnessHigh } from "react-icons/bs";
 import { FaShoppingCart } from "react-icons/fa";
 import { IoIosNotifications, IoIosSearch } from "react-icons/io";
 import { IoMenuOutline } from "react-icons/io5";
-import {
-  MdArrowDropDown,
-  MdEmail,
-  MdLockReset,
-  MdMenuOpen,
-} from "react-icons/md";
+import { MdArrowDropDown, MdEmail, MdLockReset, MdMenuOpen, } from "react-icons/md";
 import { VscAccount } from "react-icons/vsc";
-
-import ListItemIcon from "@mui/material/ListItemIcon";
+import { Link } from "react-router-dom";
 import { MyContext } from "../../App";
 const Header = () => {
   const [cartAnchor, setCartAnchor] = useState(null);
@@ -26,7 +21,12 @@ const Header = () => {
   const openEmailMenu = Boolean(EmailAnchor);
   const openNotificationMenu = Boolean(NotificationAnchor);
   const openUserMenu = Boolean(UserAnchor);
- const context=React.useContext(MyContext);
+
+const context=useContext(MyContext);
+
+
+
+
   const orders = [
     { id: 1, name: "Miron Mahmud", time: "Now", price: "$289.00", items: 3 },
     { id: 2, name: "Tahmina Bonny", time: "2m", price: "$78.00", items: 1 },
@@ -41,6 +41,8 @@ const Header = () => {
       img: "img5.png",
     },
   ];
+
+ 
 
   const handleCartClick = (event) => {
     setCartAnchor(event.currentTarget);
@@ -80,12 +82,15 @@ const Header = () => {
             </div>
 
             <div className="navbar-menu">
-              <button className="menu-btn" onClick={()=>context.setisToggleopen(!context.isToggleopen)}>
-              
-                {
-                  context.isToggleopen===false?<MdMenuOpen className="menu-icon" />:<IoMenuOutline className="menu-icon" />
-
-                }
+              <button
+                className="menu-btn"
+                onClick={() => context.setIsToggleOpen(!context.IsToggleOpen)}
+              >
+                {context.IsToggleOpen === false ? (
+                  <MdMenuOpen className="menu-icon" />
+                ) : (
+                  <IoMenuOutline className="menu-icon" />
+                )}
               </button>
             </div>
 
@@ -95,7 +100,7 @@ const Header = () => {
                 <input
                   className="search-bar"
                   type="text"
-                  placeholder="quick finding ..."
+                  placeholder="Search "
                 />
               </div>
             </div>
@@ -106,7 +111,6 @@ const Header = () => {
               </button>
             </div>
 
-  
             <div className="nav-cart">
               <button className="cart-btn" onClick={handleCartClick}>
                 <Badge badgeContent={orders.length} color="primary">
@@ -282,51 +286,61 @@ const Header = () => {
                 </Button>
               </Menu>
             </div>
-
-            <div className="navbar-account">
-              <div className="myaccount-content">
-                <div className="user-image"></div>
-                <div className="name">
-                  <div className="p-name">
-                    <p className="Narendar">Narendar</p>
-                    <button className="account-down" onClick={handleUserClick}>
-                      <MdArrowDropDown className="account-icon" />
-                    </button>
-                    <Menu
-                      anchorEl={UserAnchor}
-                      id="account-menu"
-                      open={openUserMenu}
-                      onClose={handleUserClose}
-                      transformOrigin={{
-                        horizontal: "right",
-                        vertical: "top",
-                      }}
-                      anchorOrigin={{
-                        horizontal: "right",
-                        vertical: "bottom",
-                      }}
-                    >
-                      <MenuItem onClick={handleUserClose}>
-                        <VscAccount className="account-icon" />
-                        My account
-                      </MenuItem>
-                      <Divider />
-                      <MenuItem onClick={handleUserClose}>
-                        <MdLockReset className="reset" />
-                        Reset Password
-                      </MenuItem>
-                      <MenuItem onClick={handleUserClose}>
-                        <ListItemIcon>
-                          <Logout fontSize="small" className="logout-icon" />
-                        </ListItemIcon>
-                        <p className="logout">Logout</p>
-                      </MenuItem>
-                    </Menu>
+            {context.isLogin !== true ? (
+              <div className="signin-but">
+                <Link to={"/Login"}>
+                <Button className="signin-b">Sign in</Button>
+                </Link>
+              </div>
+            ) : (
+              <div className="navbar-account">
+                <div className="myaccount-content">
+                  <div className="user-image"></div>
+                  <div className="name">
+                    <div className="p-name">
+                      <p className="Narendar">Narendar</p>
+                      <button
+                        className="account-down"
+                        onClick={handleUserClick}
+                      >
+                        <MdArrowDropDown className="account-icon" />
+                      </button>
+                      <Menu
+                        anchorEl={UserAnchor}
+                        id="account-menu"
+                        open={openUserMenu}
+                        onClose={handleUserClose}
+                        transformOrigin={{
+                          horizontal: "right",
+                          vertical: "top",
+                        }}
+                        anchorOrigin={{
+                          horizontal: "right",
+                          vertical: "bottom",
+                        }}
+                      >
+                        <MenuItem onClick={handleUserClose}>
+                          <VscAccount className="account-icon" />
+                          My account
+                        </MenuItem>
+                        <Divider />
+                        <MenuItem onClick={handleUserClose}>
+                          <MdLockReset className="reset" />
+                          Reset Password
+                        </MenuItem>
+                        <MenuItem onClick={handleUserClose}>
+                          <ListItemIcon>
+                            <Logout fontSize="small" className="logout-icon" />
+                          </ListItemIcon>
+                          <p className="logout">Logout</p>
+                        </MenuItem>
+                      </Menu>
+                    </div>
+                    <span className="@bakinarendar">@bakinarendar</span>
                   </div>
-                  <span className="@bakinarendar">@bakinarendar</span>
                 </div>
               </div>
-            </div>
+            )}
           </div>
         </div>
       </header>

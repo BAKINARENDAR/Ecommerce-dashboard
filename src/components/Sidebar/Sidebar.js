@@ -6,7 +6,6 @@ import { MdSpaceDashboard } from "react-icons/md";
 
 const Sidebar = () => {
   const [open, setopen] = useState(false);
- 
 
   return (
     <>
@@ -32,7 +31,7 @@ const Sidebar = () => {
         ) : (
           <IoIosArrowForward className="pfor-icon" />
         )}
-              <IoIosArrowForward className="pfor-icon" />
+             
             </Button>
 
             {open&&(
@@ -97,7 +96,7 @@ const Sidebar = () => {
         ) : (
           <IoIosArrowForward className="pfor-icon" />
         )}
-              <IoIosArrowForward className="pfor-icon" />
+              
             </Button>
 
             {open&&(
