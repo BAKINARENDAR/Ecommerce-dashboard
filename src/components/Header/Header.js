@@ -106,7 +106,7 @@ const context=useContext(MyContext);
             </div>
 
             <div className="nav-theme">
-              <button className="theme-btn">
+              <button className="theme-btn" onClick={()=>context.setThememode(!context.Thememode)}>
                 <BsBrightnessHigh className="theme-icon" />
               </button>
             </div>
@@ -348,4 +348,4 @@ const context=useContext(MyContext);
   );
 };
 
-export default Header;
+export default Header;     
